@@ -24,7 +24,7 @@ class Path < Pathname
   alias expand expand_path
 
   def self.[](*args)
-    new File.join(*args.map(:to_s))
+    new File.join(*args.map(&:to_s))
   end
 end
 
