@@ -37,14 +37,13 @@ module Rake
       end
     end
   end
-
-  module DSL
-    def bdep(args, &block)
-      t = Rake::BuildDependency.define_task(args, &block)
-      Rake::Task["bdeps"].prerequisites.push(t.name).uniq!
-      t
-    end
-    desc "Installs all bdeps"
-    task "bdeps"
-  end
 end
+
+def bdep(args, &block)
+  t = Rake::BuildDependency.define_task(args, &block)
+  Rake::Task["bdeps"].prerequisites.push(t.name).uniq!
+  t
+end
+
+desc "Installs all bdeps"
+task "bdeps"
