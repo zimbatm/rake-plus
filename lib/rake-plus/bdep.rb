@@ -1,4 +1,4 @@
-require 'rake/sudo'
+require 'rake-plus/sudo'
 
 module Rake
   # TODO: abstract dependencies from the package system

@@ -1,4 +1,4 @@
-require 'rake_ext'
+require 'rake-plus/rake_ext'
 
 class Recipe < Rake::Task
   include Rake::DSL if defined? Rake::DSL
