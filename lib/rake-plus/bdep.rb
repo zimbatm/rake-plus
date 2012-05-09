@@ -1,9 +1,11 @@
 require 'rake-plus/sudo'
+require 'rake/task'
 
 module Rake
   # TODO: abstract dependencies from the package system
   class BuildDependency < Rake::Task
-    include Rake::DSL if defined? Rake::DSL
+    include Rake::DSL
+    ON_OSX = (`uname` == "Darwin\n")
 
     def needed?
       return if ON_OSX
