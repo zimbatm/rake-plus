@@ -1,7 +1,9 @@
+require 'rake-plus'
 require 'rake-plus/rake_ext'
 
 class Recipe < Rake::Task
   include Rake::DSL if defined? Rake::DSL
+  BUILD_SYSTEM  = `uname -sm`.strip.gsub(' ', '-').downcase
 
   @@defaults = {}
 
@@ -44,7 +46,7 @@ class Recipe < Rake::Task
     # : causes trouble in PATH
     sub = name.split(':')
     sub[0] = sub[0] + '-' + BUILD_SYSTEM
-    BUILD_DIR / sub.join('/')
+    RakePlus.build_dir / sub.join('/')
   end
   var :src_dir do
     build_dir / 'src'
@@ -157,7 +159,7 @@ class Recipe < Rake::Task
       # Apply patches
       Dir.chdir(src_dir / unpack_dir) do
         patches.each do |p|
-          sh "patch -b -f -N -p0 < #{TOP / p}"
+          sh "patch -b -f -N -p0 < #{RakePlus.top / p}"
         end
       end
 

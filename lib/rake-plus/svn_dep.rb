@@ -22,7 +22,7 @@ module Rake
     end
     
     def local_path
-      CACHE_DIR / "svn" / basename
+      RakePlus.cache_dir / "svn" / basename
     end
 
     def basename

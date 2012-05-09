@@ -3,7 +3,7 @@ require 'erb'
 
 def tpl(name, target, variables={})
   ctx = OpenStruct.new(variables)
-  tpl_str = File.read(SRC_DIR / "tpl/#{name}.erb")
+  tpl_str = File.read(RakePlus.template_dir / "#{name}.erb")
   tpl = ERB.new(tpl_str)
   out = tpl.result ctx.send(:binding)
   FileUtils.mkdir_p File.dirname(target)

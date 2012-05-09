@@ -41,7 +41,7 @@ module Rake
     end
 
     def local_path
-      CACHE_DIR / "git" / basename
+      RakePlus.cache_dir / "git" / basename
     end
 
     def basename
