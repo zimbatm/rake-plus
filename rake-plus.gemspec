@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = "rake-plus"
-  s.version = '1.0'
+  s.version = '0.5'
   s.homepage = 'https://github.com/zimbatm/rake-plus'
-  s.summary = 'Common Rake extensions'
+  s.summary = 'A shiny rake extensions collection'
   s.description = 'A collection of rake extensions that are useful all around'
   s.author = 'Jonas Pfenniger'
   s.email = 'jonas@pfenniger.name'
