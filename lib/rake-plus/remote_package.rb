@@ -35,7 +35,7 @@ module Rake
 
     # Utility
     def unpack_to(dir)
-      abs_local_path = RakePlus.top_dir.expand(local_path)
+      abs_local_path = RakePlus.top.expand(local_path)
       Dir.chdir(dir) do
         case abs_local_path
         when /\.tar\.gz$/, /\.tgz$/
