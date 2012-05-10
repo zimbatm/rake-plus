@@ -35,7 +35,7 @@ module Rake
 
     # Utility
     def unpack_to(dir)
-      abs_local_path = RakePlus.top.expand(local_path)
+      abs_local_path = local_path.expand
       Dir.chdir(dir) do
         case abs_local_path
         when /\.tar\.gz$/, /\.tgz$/
@@ -45,7 +45,7 @@ module Rake
         when /\.tar$/
           sh "tar xvf \"#{abs_local_path}\""
         else
-          raise "Unsupported file extensions of #{basename}"
+          raise "Unsupported file extensions of #{abs_local_path}"
         end
       end
     end
