@@ -1,5 +1,6 @@
 require 'rake-plus'
 require 'rake-plus/rake_ext'
+require 'rake-plus/with_env'
 
 class Recipe < Rake::Task
   include Rake::DSL if defined? Rake::DSL
@@ -199,19 +200,6 @@ class Recipe < Rake::Task
     # done
     touch build_dir / "install.done"
     super
-  end
-
-protected
-
-  def with_env(new_env={}, &block)
-    bak = new_env.keys.inject({}) do |h,k|
-      h[k.to_s] = ENV[k.to_s]
-      h
-    end
-    new_env.each{|k,v| ENV[k.to_s] = v.to_s }
-    yield
-  ensure
-    bak.each{|k,v| ENV[k] = v }
   end
 
 end
